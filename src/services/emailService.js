@@ -11,14 +11,10 @@ const __dirname = path.dirname(__filename);
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
   port: process.env.SMTP_PORT,
-  secure: false, // Use TLS
+  secure: process.env.SMTP_SECURE === 'true', // Use TLS if SMTP_SECURE is 'true'
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
-  },
-  tls: {
-    // Do not fail on invalid certs
-    rejectUnauthorized: false
   },
 });
 
