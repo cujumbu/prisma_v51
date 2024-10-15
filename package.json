@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "start": "node server.js",
-    "render-postbuild": "echo 'Starting render-postbuild' && prisma generate && echo 'Prisma generate complete' && npm run build && echo 'Build complete'"
+    "render-postbuild": "echo 'Starting render-postbuild' && prisma generate && echo 'Prisma generate complete' && prisma migrate deploy && echo 'Prisma migration complete' && npm run build && echo 'Build complete' && node prisma/seed.js",
+    "seed": "node prisma/seed.js"
   },
   "dependencies": {
     "@prisma/client": "^5.10.2",
