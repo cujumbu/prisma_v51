@@ -5,11 +5,16 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { sendClaimSubmissionEmail, sendClaimStatusUpdateEmail } from './src/services/emailService.js';
+import fs from 'fs';
 
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// Debug: Log package.json contents
+console.log('package.json contents:');
+console.log(fs.readFileSync('package.json', 'utf8'));
 
 const app = express();
 
